@@ -1,0 +1,9 @@
+{
+  "autoload": {
+    "psr-4": {
+      "watchShop\\": "vendor/watchShop",
+      "app\\": "app"
+    }
+  },
+  "require": {}
+}
