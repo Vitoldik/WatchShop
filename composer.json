@@ -1,7 +1,7 @@
 {
   "autoload": {
     "psr-4": {
-      "watchShop\\": "vendor/watchShop",
+      "watchShop\\": "vendor/watchShop/core",
       "app\\": "app"
     }
   },

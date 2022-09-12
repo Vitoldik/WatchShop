@@ -20,7 +20,7 @@ class ComposerStaticInite713931974a468a5aaa0a150322add4b
     public static $prefixDirsPsr4 = array (
         'watchShop\\' => 
         array (
-            0 => __DIR__ . '/..' . '/watchShop',
+            0 => __DIR__ . '/..' . '/watchShop/core',
         ),
         'app\\' => 
         array (
