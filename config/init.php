@@ -8,6 +8,8 @@ const CORE_DIR = __DIR__ . '/../vendor/watchShop/core';
 const LIBS_DIR = __DIR__ . '/../vendor/watchShop/core/libs';
 const CACHE_DIR = __DIR__ . '/../tmp/cache';
 const CONFIG_DIR = __DIR__ . '/../config';
+const TMP_DIR = __DIR__ . '/../tmp';
+const PAGES_DIR = __DIR__ . '/../public/pages';
 
 const TEMPLATE = 'default';
 
