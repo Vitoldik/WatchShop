@@ -7,5 +7,3 @@ require_once LIBS_DIR . '/functions.php';
 require_once CONFIG_DIR . '/routes.php';
 
 new App();
-
-debug(\watchShop\Router::getRoutes());
