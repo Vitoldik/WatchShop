@@ -9,6 +9,6 @@
 <body>
 
 <h1>Шаблон DEFAULT</h1>
-
+<?= $content; ?>
 </body>
 </html>
