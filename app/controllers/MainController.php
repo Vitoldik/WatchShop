@@ -2,7 +2,9 @@
 
 namespace app\controllers;
 
-class MainController {
+use watchShop\base\Controller;
+
+class MainController extends AppController {
 
     public function indexAction() {
         echo 'Главная страница';
