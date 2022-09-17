@@ -26,6 +26,9 @@ class View {
     }
 
     public function render($data) {
+        if (is_array($data))
+            extract($data);
+
         $viewFile = APP_DIR . "/views/{$this->prefix}{$this->controller}/{$this->view}.php";
 
         if (is_file($viewFile)) {
@@ -45,5 +48,15 @@ class View {
                 throw new \Exception("Не найден шаблон {$this->layout}");
             }
         }
+    }
+
+    public function getMeta() {
+        ['title' => $title, 'desc' => $desc, 'keywords' => $keywords] = $this->meta;
+
+        $output = "<title>$title</title>" . PHP_EOL;
+        $output .= "<meta name='description' content='$desc'>" . PHP_EOL;
+        $output .= "<meta name='keywords' content='$keywords'>" . PHP_EOL;
+
+        return $output;
     }
 }

@@ -11,7 +11,7 @@ abstract class Controller {
     public $prefix;
     public $layout;
     public $data = [];
-    public $meta = [];
+    public $meta = ['title' => '', 'desc' => '', 'keywords' => ''];
 
     public function  __construct($route) {
         $this->route = $route;
@@ -32,10 +32,8 @@ abstract class Controller {
     }
 
     public function setMeta($title = '', $desc = '', $keywords = '') {
-        ['title' => $title, 'desc' => $desc, 'keywords' => $keywords] = $meta;
-
         $this->meta['title'] = $title;
         $this->meta['desc'] = $desc;
-        $this->meta['key'] = $key;
+        $this->meta['keywords'] = $keywords;
     }
 }
