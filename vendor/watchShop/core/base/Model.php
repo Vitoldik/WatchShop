@@ -2,6 +2,8 @@
 
 namespace watchShop\base;
 
+use watchShop\Db;
+
 abstract class Model {
 
     public $attributes = [];
@@ -9,6 +11,6 @@ abstract class Model {
     public $rules = [];
 
     public function __construct() {
-
+        Db::instance();
     }
 }
