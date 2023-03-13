@@ -35,3 +35,7 @@
 [2023-03-13 18:06:34] Текст ошибки: Страница не найдена! | Файл: C:\Users\Vitaliy\Desktop\xamp-projects\watch-shop\vendor\watchShop\core\Router.php | Строка: 46
 [2023-03-13 18:08:41] Текст ошибки: Страница не найдена! | Файл: C:\Users\Vitaliy\Desktop\xamp-projects\watch-shop\vendor\watchShop\core\Router.php | Строка: 46
 [2023-03-13 18:32:26] Текст ошибки: Call to undefined method app\controllers\MainController::set() | Файл: C:\Users\Vitaliy\Desktop\xamp-projects\watch-shop\app\controllers\MainController.php | Строка: 14
+[2023-03-13 18:55:23] Текст ошибки: Undefined constant "hits" | Файл: C:\Users\Vitaliy\Desktop\xamp-projects\watch-shop\app\views\Main\index.php | Строка: 43
+[2023-03-13 18:55:45] Текст ошибки: Undefined constant "hits" | Файл: C:\Users\Vitaliy\Desktop\xamp-projects\watch-shop\app\views\Main\index.php | Строка: 43
+[2023-03-13 18:56:26] Текст ошибки: Страница не найдена! | Файл: C:\Users\Vitaliy\Desktop\xamp-projects\watch-shop\vendor\watchShop\core\Router.php | Строка: 46
+[2023-03-13 18:58:31] Текст ошибки: Страница не найдена! | Файл: C:\Users\Vitaliy\Desktop\xamp-projects\watch-shop\vendor\watchShop\core\Router.php | Строка: 46
