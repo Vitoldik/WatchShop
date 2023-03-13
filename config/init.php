@@ -11,7 +11,7 @@ const CONFIG_DIR = __DIR__ . '/../config';
 const TMP_DIR = __DIR__ . '/../tmp';
 const PAGES_DIR = __DIR__ . '/../public/pages';
 
-const LAYOUT = 'default';
+const LAYOUT = 'watches';
 
 const PROTOCOL = 'http://';
 // http://localhost/public/index.php
