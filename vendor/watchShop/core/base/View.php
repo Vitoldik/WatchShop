@@ -13,7 +13,7 @@ class View {
     public $data = [];
     public $meta = [];
 
-    public function  __construct($route, $layout = '', $view = '', $meta) {
+    public function  __construct($route, $layout = '', $view = '', $meta = []) {
         $this->route = $route;
         ['controller' => $controller, 'prefix' => $prefix] = $route;
         $this->controller = $controller;
