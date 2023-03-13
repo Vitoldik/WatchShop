@@ -715,7 +715,6 @@ a.mask {
 	display:block;
 }
 .srch {
-    display: none;
     position: absolute;
     top: 18%;
     left: 16px;

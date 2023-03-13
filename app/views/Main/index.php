@@ -65,9 +65,13 @@
                                         <?php endif; ?>
                                     </h4>
                                 </div>
-                                <div class="srch">
-                                    <span>-50%</span> <!-- TODO реализовать процент скидки -->
-                                </div>
+                                <?php if ($hit->old_price): ?>
+                                    <div class="srch">
+                                            <span>
+                                                <?= round(($hit->price / $hit->old_price - 1) * 100, 2) ?>%
+                                            </span>
+                                    </div>
+                                <?php endif ?>
                             </div>
                         </div>
                     <?php endforeach; ?>
