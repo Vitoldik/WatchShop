@@ -26,7 +26,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="col-md-6 top-header-left">
                 <div class="drop">
                     <div class="box">
-                        <select tabindex="4" class="dropdown drop">
+                        <select id="currency" tabindex="4" class="dropdown drop">
                             <?php new \app\widgets\currency\Currency() ?>
                         </select>
                     </div>
@@ -293,6 +293,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script src="js/jquery.easydropdown.js"></script>
 <!--Slider-Starts-Here-->
 <script src="js/responsiveslides.min.js"></script>
+<script src="js/main.js"></script>
 <script>
     // You can also use "$(window).load(function() {"
     $(function () {
