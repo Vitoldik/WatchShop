@@ -2,19 +2,23 @@
 
 namespace app\widgets\currency;
 
+use watchShop\App;
+
 class Currency {
 
-    protected $tpl; // шаблон
-    protected $currencies; // список валют
-    protected $currency; // активная валюта
+    protected string $tpl; // шаблон
+    protected array $currencies; // список валют
+    protected mixed $currency; // активная валюта
 
     public function __construct() {
-        $this->tpl = __DIR__ . '/' . '/currency_tpl/currency.php';
+        $this->tpl = __DIR__ . '/currency_tpl/currency.php';
         $this->run();
     }
 
     protected function run(): void {
-        $this->getHtml();
+        $this->currencies = App::$app->getProperty('currencies');
+        $this->currency = App::$app->getProperty('currency');
+        echo $this->getHtml();
     }
 
     public static function getCurrencies() {
@@ -35,7 +39,9 @@ class Currency {
         return $currency;
     }
 
-    protected function getHtml() {
-
+    protected function getHtml(): bool|string {
+        ob_start();
+        require_once $this->tpl;
+        return ob_get_clean();
     }
 }

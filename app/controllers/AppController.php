@@ -17,8 +17,6 @@ class AppController extends Controller {
         $currencies = Currency::getCurrencies();
         App::$app->setProperty('currencies', $currencies);
         App::$app->setProperty('currency', Currency::getCurrency($currencies));
-
-        debug(App::$app->getProperties());
     }
 
 }
