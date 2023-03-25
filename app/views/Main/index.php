@@ -41,11 +41,16 @@
 <!--about-end-->
 <!--product-starts-->
 <?php if ($hits): ?>
+<?php $curr = \watchShop\App::$app->getProperty('currency') ?>
     <div class="product">
         <div class="container">
             <div class="product-top">
                 <div class="product-one">
                     <?php foreach ($hits as $hit): ?>
+                        <?php
+                            $price = $hit->price * $curr['value'];
+                            $oldPrice = $hit->old_price ? $hit->old_price * $curr['value'] : false;
+                        ?>
                         <div class="col-md-3 product-left">
                             <div class="product-main simpleCart_shelfItem">
                                 <a href="product/<?= $hit->alias ?>" class="mask"><img class="img-responsive zoom-img" src="images/<?= $hit->img ?>" alt=""/></a>
@@ -56,19 +61,19 @@
                                     <p>Explore Now</p>
                                     <h4>
                                         <a class="add-to-cart-link" href="cart/add?id=<?= $hit->id ?>"><i></i></a>
-                                        <span class=" item_price">$ <?= $hit->price ?></span>
+                                        <span class=" item_price"><?= $curr['symbol_left'] ?><?= $price ?><?= $curr['symbol_right'] ?></span>
 
-                                        <?php if ($hit->old_price): ?>
+                                        <?php if ($oldPrice): ?>
                                             <small>
-                                                <del><?= $hit->old_price ?></del>
+                                                <del><?= $curr['symbol_left'] ?><?= $oldPrice ?><?= $curr['symbol_right'] ?></del>
                                             </small>
                                         <?php endif; ?>
                                     </h4>
                                 </div>
-                                <?php if ($hit->old_price): ?>
+                                <?php if ($oldPrice): ?>
                                     <div class="srch">
                                             <span>
-                                                <?= round(($hit->price / $hit->old_price - 1) * 100, 2) ?>%
+                                                <?= round(($price / $oldPrice - 1) * 100, 2) ?>%
                                             </span>
                                     </div>
                                 <?php endif ?>
