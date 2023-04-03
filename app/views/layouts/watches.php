@@ -70,7 +70,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="menu">
                     <?php new \app\widgets\menu\Menu([
                         'tpl' => PUBLIC_DIR . '/menu/menu.php',
-                        'container' => 'ul'
+                        'container' => 'ul',
+                        //'attrs' => ['style' => 'color:red;']
                     ]) ?>
                 </div>
 <!--                <div class="top-nav">-->
