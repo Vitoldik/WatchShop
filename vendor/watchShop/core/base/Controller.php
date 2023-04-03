@@ -4,7 +4,6 @@ namespace watchShop\base;
 
 abstract class Controller {
 
-    public $route;
     public $controller;
     public $model;
     public $view;
@@ -13,8 +12,7 @@ abstract class Controller {
     public $data = [];
     public $meta = ['title' => '', 'desc' => '', 'keywords' => ''];
 
-    public function  __construct($route) {
-        $this->route = $route;
+    public function  __construct(public $route) {
         ['controller' => $controller, 'action' => $action, 'prefix' => $prefix] = $route;
         $this->controller = $controller;
         $this->model = $controller;
