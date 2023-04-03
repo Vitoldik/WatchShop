@@ -17,6 +17,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!--start-menu-->
     <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/ionicons.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
 <!--top-header-->
@@ -67,12 +69,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <div class="container">
         <div class="header">
             <div class="col-md-9 header-left">
-                <div class="menu">
-                    <?php new \app\widgets\menu\Menu([
-                        'tpl' => PUBLIC_DIR . '/menu/menu.php',
-                        'container' => 'ul',
-                        //'attrs' => ['style' => 'color:red;']
-                    ]) ?>
+                <div class="menu-container">
+                    <div class="menu">
+                        <?php new \app\widgets\menu\Menu([
+                            'tpl' => PUBLIC_DIR . '/menu/menu.php',
+                            //'container' => 'ul',
+                            //'attrs' => ['style' => 'color:red;']
+                        ]) ?>
+                    </div>
                 </div>
 <!--                <div class="top-nav">-->
 <!--                    <ul class="memenu skyblue"><li class="active"><a href="index.html">Home</a></li>-->
@@ -300,6 +304,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script src="js/jquery.easydropdown.js"></script>
 <!--Slider-Starts-Here-->
 <script src="js/responsiveslides.min.js"></script>
+<script src="js/megamenu.js"></script>
 <script src="js/main.js"></script>
 <script>
     // You can also use "$(window).load(function() {"

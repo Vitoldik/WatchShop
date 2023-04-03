@@ -1,4 +1,4 @@
-<?php $parent = isset($category['children']) ?>
+<?php //$parent = isset($category['children']) ?>
 <li>
     <a href="category/<?=$category['alias']?>"><?=$category['title']?></a>
     <?php if(isset($category['children'])): ?>
