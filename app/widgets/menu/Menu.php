@@ -9,15 +9,16 @@ use watchShop\Cache;
 class Menu {
 
     protected $data;
-    protected $tree;
+    protected array $tree;
     protected $menuHtml;
     protected $tpl;
-    protected $container = 'ul';
+    protected string $container = 'ul';
+    protected string $class = 'menu';
     protected string $table = 'category';
     protected int $cache = 3600;
     protected string $cacheKey  = 'menu';
     protected array $attrs = [];
-    protected $prepend = '';
+    protected string $prepend = '';
 
     public function __construct($options = []) {
         $this->tpl = __DIR__ . '/menu_tpl/menu.php';
@@ -50,25 +51,61 @@ class Menu {
             if (!$this->data)
                 $this->data = R::getAssoc("SELECT * FROM $this->table");
 
-            // TODO работа с деревом меню
+            $this->tree = $this->getTree();
+            $this->menuHtml = $this->getMenuHtml($this->tree);
+
+            if ($this->cache) {
+                $cache->set($this->cacheKey, $this->menuHtml, $this->cache);
+            }
         }
 
         $this->output();
     }
 
     protected function output(): void {
+        $attrs = '';
+
+        if (!empty($this->attrs)) {
+            foreach ($this->attrs as $k => $v) {
+                $attrs .= " $k='$v' ";
+            }
+        }
+
+        echo "<$this->container class='$this->class' $attrs>";
+        echo $this->prepend;
         echo $this->menuHtml;
+        echo "</$this->container>";
     }
 
-    protected function getTree() {
+    protected function getTree(): array {
+        $tree = [];
+        $data = $this->data;
 
+        foreach ($data as $id => &$node) {
+            if ($node['parent_id']) {
+                $data[$node['parent_id']]['children'][$id] = &$node;
+                continue;
+            }
+
+            $tree[$id] = &$node;
+        }
+
+        return $tree;
     }
 
-    protected function getMenuHtml($tree, $tab = '') {
+    protected function getMenuHtml($tree, $tab = ''): string {
+        $str = '';
 
+        foreach ($tree as $id => $category) {
+            $str .= $this->categoryToTemplate($category, $tab, $id);
+        }
+
+        return $str;
     }
 
-    protected function categoryToTemplate($category, $tab, $id) {
-
+    protected function categoryToTemplate($category, $tab, $id): bool|string {
+        ob_start();
+        require $this->tpl;
+        return ob_get_clean();
     }
 }
