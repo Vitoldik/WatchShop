@@ -33,26 +33,21 @@
                             </ul>
                         </div>
                     </div>
+                    <?php
+                        $curr = \watchShop\App::$app->getProperty('currency');
+                        $categories = \watchShop\App::$app->getProperty('menuData');
+                        $price = $product->price * $curr['value'];
+                        $oldPrice = $product->old_price ? $product->old_price * $curr['value'] : false;
+                    ?>
                     <div class="col-md-7 single-top-right">
                         <div class="single-para simpleCart_shelfItem">
-                            <h2>Lorem Ipsum</h2>
-                            <div class="star-on">
-                                <ul class="star-footer">
-                                    <li><a href="#"><i> </i></a></li>
-                                    <li><a href="#"><i> </i></a></li>
-                                    <li><a href="#"><i> </i></a></li>
-                                    <li><a href="#"><i> </i></a></li>
-                                    <li><a href="#"><i> </i></a></li>
-                                </ul>
-                                <div class="review">
-                                    <a href="#"> 1 customer review </a>
+                            <h2><?=$product->title?></h2>
 
-                                </div>
-                                <div class="clearfix"> </div>
-                            </div>
-
-                            <h5 class="item_price">$ 95.00</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+                            <h5 class="item_price"><?= $curr['symbol_left'] ?><?= $price ?><?= $curr['symbol_right'] ?></h5>
+                            <?php if ($oldPrice): ?>
+                                <del><?= $curr['symbol_left'] ?><?= $oldPrice ?><?= $curr['symbol_right'] ?></del>
+                            <?php endif; ?>
+                            <?=$product->content?>
                             <div class="available">
                                 <ul>
                                     <li>Color
@@ -73,13 +68,15 @@
                                 </ul>
                             </div>
                             <ul class="tag-men">
-                                <li><span>TAG</span>
-                                    <span class="women1">: Women,</span></li>
-                                <li><span>SKU</span>
-                                    <span class="women1">: CK09</span></li>
+                                <li><span>Category</span>
+                                    <span>: <a href="category/<?=$categories[$product->category_id]['alias']?>"><?=$categories[$product->category_id]['title']?></a></span></li>
                             </ul>
-                            <a href="#" class="add-cart item_add">ADD TO CART</a>
-
+                            <div class="cart-container">
+                                <div class="quantity">
+                                    <input type="number" size="4" value="1" name="quantity" min="1" step="1">
+                                </div>
+                                <a id="productAdd" data-id="<?=$product->id?>" href="cart/add?id=<?=$product->id?>" class="add-cart item_add add-to-cart-link">ADD TO CART</a>
+                            </div>
                         </div>
                     </div>
                     <div class="clearfix"> </div>
