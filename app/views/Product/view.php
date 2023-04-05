@@ -14,6 +14,7 @@
 <div class="single contact">
     <div class="container">
         <div class="single-main">
+            <?=debug($product);?>
             <div class="col-md-9 single-main-left">
                 <div class="sngl-top">
                     <div class="col-md-5 single-top-left">
