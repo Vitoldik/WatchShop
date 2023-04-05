@@ -16,7 +16,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!--start-menu-->
-    <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/ionicons.min.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
 </head>
@@ -298,8 +297,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!--footer-end-->
 <script src="js/jquery-1.11.0.min.js"></script>
 <script src="js/simpleCart.min.js"> </script>
-<script type="text/javascript" src="js/memenu.js"></script>
-<script>$(document).ready(function(){$(".memenu").memenu();});</script>
 <!--dropdown-->
 <script src="js/jquery.easydropdown.js"></script>
 <!--Slider-Starts-Here-->
