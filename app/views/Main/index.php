@@ -60,7 +60,7 @@
                                     </h3>
                                     <p>Explore Now</p>
                                     <h4>
-                                        <a class="add-to-cart-link" href="cart/add?id=<?= $hit->id ?>"><i></i></a>
+                                        <a class="add-to-cart-link" href="cart/add?id=<?= $hit->id ?>" data-id="<?=$hit->id?>"><i></i></a>
                                         <span class=" item_price"><?= $curr['symbol_left'] ?><?= $price ?><?= $curr['symbol_right'] ?></span>
 
                                         <?php if ($oldPrice): ?>
