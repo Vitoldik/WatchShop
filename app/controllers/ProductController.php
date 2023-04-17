@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Product;
 use R;
 
 class ProductController extends AppController {
@@ -26,11 +27,21 @@ class ProductController extends AppController {
             WHERE t1.product_id = ?
         ', [$productId]);
 
+        // Просмотренные товары
+        $productModel = new Product();
+        $productModel->setRecentlyViewed($productId); // Записываем в куки просмотренный товар
+        $recentlyViewed = $productModel->getRecentlyViewed();
+
+        if ($recentlyViewed) {
+            // R::genslots сгенерирует количество вопросительных знаков равное элементам массива
+            $recentlyViewed = R::find('product', 'id IN (' . R::genslots($recentlyViewed) . ')', $recentlyViewed);
+        }
+
         // Галерея
         $gallery = R::findAll('gallery', 'product_id = ?', [$productId]);
 
         $this->setMeta($product->title, $product->description, $product->keywords);
-        $this->setData(compact('product', 'related', 'gallery'));
+        $this->setData(compact('product', 'related', 'gallery', 'recentlyViewed'));
     }
 
 }

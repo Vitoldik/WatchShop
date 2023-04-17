@@ -14,7 +14,6 @@
 <div class="single contact">
     <div class="container">
         <div class="single-main">
-            <?=debug($product);?>
             <div class="col-md-9 single-main-left">
                 <div class="sngl-top">
                     <div class="<?='col-md-' . ($gallery ? '5' : '3')?> single-top-left">
@@ -156,6 +155,46 @@
                         <div class="clearfix"></div>
                     </div>
                 </div>
+                <?php endif; ?>
+
+                <?php if ($recentlyViewed): ?>
+                    <div class="latestproducts">
+                        <div class="product-one">
+                            <h3>Recently viewed:</h3>
+                            <?php foreach ($recentlyViewed as $item): ?>
+                                <?php
+                                $price = $item['price'] * $curr['value'];
+                                $oldPrice = isset($item['old_price']) ? $item['old_price'] * $curr['value'] : false;
+                                ?>
+                                <div class="col-md-4 product-left p-left">
+                                    <div class="product-main simpleCart_shelfItem">
+                                        <a href="product/<?=$item['alias']?>" class="mask"><img class="img-responsive zoom-img" src="images/<?=$item['img']?>" alt="" /></a>
+                                        <div class="product-bottom">
+                                            <h3><a href="product/<?=$item['alias']?>"><?=$item['title']?></a></h3>
+                                            <p>Explore Now</p>
+                                            <h4>
+                                                <a class="item_add add-to-cart-link" href="cart/add?id=<?=$item['id']?>" data-id="<?=$item['id']?>"><i></i></a>
+                                                <span class="item_price">
+                                            <?= $curr['symbol_left'] ?><?= $price ?><?= $curr['symbol_right'] ?>
+                                                    <?php if ($oldPrice): ?>
+                                                        <del><?= $curr['symbol_left'] ?><?= $oldPrice ?><?= $curr['symbol_right'] ?></del>
+                                                    <?php endif; ?>
+                                        </span>
+                                            </h4>
+                                        </div>
+                                        <?php if ($oldPrice): ?>
+                                            <div class="srch">
+                                            <span>
+                                                <?= round(($price / $oldPrice - 1) * 100, 2) ?>%
+                                            </span>
+                                            </div>
+                                        <?php endif ?>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
                 <?php endif; ?>
             </div>
             <div class="col-md-3 single-right">
