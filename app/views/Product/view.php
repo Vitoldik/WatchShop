@@ -3,8 +3,7 @@
     <div class="container">
         <div class="breadcrumbs-main">
             <ol class="breadcrumb">
-                <li><a href="index.html">Home</a></li>
-                <li class="active">Single</li>
+                <?=$breadCrumbs?>
             </ol>
         </div>
     </div>
@@ -34,7 +33,7 @@
                     </div>
                     <?php
                         $curr = \watchShop\App::$app->getProperty('currency');
-                        $categories = \watchShop\App::$app->getProperty('menuData');
+                        $categories = \watchShop\App::$app->getProperty('categories');
                         $price = $product->price * $curr['value'];
                         $oldPrice = $product->old_price ? $product->old_price * $curr['value'] : false;
                     ?>

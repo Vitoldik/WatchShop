@@ -46,7 +46,7 @@ class Menu {
         $this->menuHtml = $cache->get($this->cacheKey);
 
         if (!$this->menuHtml) {
-            $this->data = App::$app->getProperty('menuData');
+            $this->data = App::$app->getProperty('categories');
 
             if (!$this->data)
                 $this->data = R::getAssoc("SELECT * FROM $this->table");

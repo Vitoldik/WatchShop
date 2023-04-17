@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\BreadCrumbs;
 use app\models\Product;
 use R;
 
@@ -19,6 +20,13 @@ class ProductController extends AppController {
         }
 
         $productId = $product->id;
+
+        /*
+            Хлебные крошки (Breadcrumbs) — это навигационная цепочка, показывающая место страницы
+            в иерархии сайта. Она нужна, чтобы пользователь мог быстро перейти на главную, в предыдущий
+            раздел или в корневой каталог.
+        */
+        $breadCrumbs = BreadCrumbs::getBreadCrumbsHtml($product->category_id, $product->title);
 
         // Связанные товары
         $related = R::getAll('
@@ -41,7 +49,7 @@ class ProductController extends AppController {
         $gallery = R::findAll('gallery', 'product_id = ?', [$productId]);
 
         $this->setMeta($product->title, $product->description, $product->keywords);
-        $this->setData(compact('product', 'related', 'gallery', 'recentlyViewed'));
+        $this->setData(compact('product', 'related', 'gallery', 'recentlyViewed', 'breadCrumbs'));
     }
 
 }

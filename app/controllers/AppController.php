@@ -18,19 +18,19 @@ class AppController extends Controller {
         $currencies = Currency::getCurrencies();
         App::$app->setProperty('currencies', $currencies);
         App::$app->setProperty('currency', Currency::getCurrency($currencies));
-        App::$app->setProperty('menuData', self::getCachedCategory());
+        App::$app->setProperty('categories', self::getCachedCategory());
     }
 
     public static function getCachedCategory() {
         $cache = Cache::instance();
-        $menuData = $cache->get('menuData');
+        $categories = $cache->get('categories');
 
-        if (!$menuData) {
-            $menuData = R::getAssoc('SELECT * FROM category');
-            $cache->set('menuData', $menuData);
+        if (!$categories) {
+            $categories = R::getAssoc('SELECT * FROM category');
+            $cache->set('categories', $categories);
         }
 
-        return $menuData;
+        return $categories;
     }
 
 }
