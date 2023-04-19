@@ -161,6 +161,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     </div>
 </div>
 <!--footer-end-->
+<?php $curr = \watchShop\App::$app->getProperty('currency') ?>
+<script>
+    const MAIN_URL = '<?=MAIN_URL?>',
+          COURSE = '<?=$curr['value']?>',
+          SYMBOL_LEFT = '<?=$curr['symbol_left']?>',
+          SYMBOL_RIGHT = '<?=$curr['symbol_right']?>'
+</script>
+
 <script src="js/jquery-1.11.0.min.js"></script>
 <script src="js/simpleCart.min.js"> </script>
 <!--dropdown-->
