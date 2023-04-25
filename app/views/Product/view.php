@@ -46,6 +46,7 @@
                                 <del id="old-price"><?= $curr['symbol_left'] ?><?= $oldPrice ?><?= $curr['symbol_right'] ?></del>
                             <?php endif; ?>
                             <?=$product->content?>
+                            <?php if ($modifications): ?>
                             <div class="available">
                                 <ul>
                                     <li>Color
@@ -64,6 +65,7 @@
                                     <div class="clearfix"> </div>
                                 </ul>
                             </div>
+                            <?php endif; ?>
                             <ul class="tag-men">
                                 <li><span>Category</span>
                                     <span>: <a href="category/<?=$categories[$product->category_id]['alias']?>"><?=$categories[$product->category_id]['title']?></a></span></li>
