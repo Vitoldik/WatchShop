@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Cart;
 use R;
 
 class CartController extends AppController {
@@ -21,7 +22,13 @@ class CartController extends AppController {
             ?  R::findOne('modification', 'id = ? AND product_id = ?', [$modification_id, $id])
             : null;
 
-        debug($modification);
-        die;
+        $cartModel = new Cart();
+        $cartModel->addToCart($product, $quantity, $modification);
+
+        if ($this->isAjax()) {
+            $this->loadView('cart_modal');
+        } else {
+            redirect();
+        }
     }
 }
