@@ -45,9 +45,41 @@ $('body').on('click', '.add-to-cart-link', (e) => {
 const $cart = $('#cart')
 const $modalBody = $cart.find('.modal-body')
 const $cartControls = $cart.find('.modal-footer a, .modal-footer .btn-danger')
+const $cartInfoContainer = $('.cart .simpleCart_info_container')
+const $simpleCartTotal = $cartInfoContainer.find('.simpleCart_total')
+const $simpleCartQuantity = $cartInfoContainer.find('.simpleCart_quantity')
 
 function showCart(cart) {
     $modalBody.html(cart)
-    $cartControls.toggle($.trim(cart) !== '<h3>Корзина пуста</h3>')
+    const isCartEmpty = $.trim(cart) === '<h3>Корзина пуста</h3>'
+    $cartControls.toggle(!isCartEmpty)
     $cart.modal()
+
+    if (isCartEmpty) {
+        $simpleCartTotal.text('Empty Cart')
+        $simpleCartQuantity.clear()
+        return
+    }
+
+    $simpleCartTotal.text($cart.find('.cart-sum').text())
+    $simpleCartQuantity.text(`${$cart.find('.cart-qty').text()}x`)
+}
+
+$('.cart-link').on('click', (e) => {
+    e.preventDefault()
+
+    getCart()
+})
+
+function getCart() {
+    $.ajax({
+        url: '/cart/show',
+        type: 'GET',
+        success: (response) => {
+            showCart(response)
+        },
+        error: () => {
+            alert('Error! Try later')
+        }
+    })
 }

@@ -52,7 +52,9 @@ body a{
 /*--starts-top-header--*/
 .top-header {
     background: #000;
-    padding: 10px 0px;
+    display: flex;
+	align-items: center;
+	min-height: 60px;
 }
 .search-bar input[type="text"] {
 	width: 100%;
@@ -122,9 +124,6 @@ body a{
 	font-size: 1em;
 	font-weight: 700;
 	margin: 0;
-}
-.drop {
-    margin-top: 10px;
 }
 a.simpleCart_empty {
     color: rgba(255, 255, 255, 0.6);
@@ -3076,4 +3075,28 @@ ul.tag-men {
 
 #cart table img {
 	max-height: 50px;
+}
+
+.total {
+	display: flex;
+	gap: 10px;
+}
+
+.total img {
+	align-self: center;
+}
+
+.total .simpleCart_info_container {
+	display: flex;
+	flex-direction: column;
+}
+
+.total .simpleCart_quantity {
+	color: #bbbbbb;
+	font-size: 12px;
+}
+
+.top-header-main {
+	display: flex;
+	align-items: center;
 }

@@ -47,12 +47,30 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
             <div class="col-md-6 top-header-left">
                 <div class="cart box_1">
-                    <a href="checkout.html">
+                    <a class="cart-link" href="cart/show">
                         <div class="total">
-                            <span class="simpleCart_total"></span></div>
-                        <img src="images/cart-1.png" alt="" />
+                            <img src="images/cart-1.png" alt="">
+                                <div class="simpleCart_info_container">
+                                    <?php
+                                        $cartNotEmpty = !empty($_SESSION['cart']);
+                                    ?>
+                                    <span class="simpleCart_total">
+                                        <?=$cartNotEmpty
+                                            ? $_SESSION['cart.currency']['symbol_left'] . $_SESSION['cart.sum'] . $_SESSION['cart.currency']['symbol_right']
+                                            : 'Empty Cart' ?>
+                                    </span>
+                                    <span class="simpleCart_quantity">
+                                        <?=$cartNotEmpty ? $_SESSION['cart.quantity'] . 'x' : ''?>
+                                    </span>
+                                </div>
+                        </div>
                     </a>
-                    <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+<!--                    <a href="checkout.html">-->
+<!--                        <div class="total">-->
+<!--                            <span class="simpleCart_total"></span></div>-->
+<!--                        <img src="images/cart-1.png" alt="" />-->
+<!--                    </a>-->
+<!--                    <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>-->
                     <div class="clearfix"> </div>
                 </div>
             </div>
