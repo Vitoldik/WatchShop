@@ -42,6 +42,12 @@ $('body').on('click', '.add-to-cart-link', (e) => {
     })
 })
 
+const $cart = $('#cart')
+const $modalBody = $cart.find('.modal-body')
+const $cartControls = $cart.find('.modal-footer a, .modal-footer .btn-danger')
+
 function showCart(cart) {
-    console.log(cart)
+    $modalBody.html(cart)
+    $cartControls.toggle($.trim(cart) !== '<h3>Корзина пуста</h3>')
+    $cart.modal()
 }

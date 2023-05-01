@@ -3073,3 +3073,7 @@ ul.tag-men {
 .cart-container {
 	margin-top: 2em;
 }
+
+#cart table img {
+	max-height: 50px;
+}
