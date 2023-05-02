@@ -58,7 +58,7 @@ function showCart(cart) {
     }
 
     $simpleCartTotal.text($cart.find('.cart-sum').text())
-    $simpleCartQuantity.text(`${$cart.find('.cart-qty').text()}x`)
+    $simpleCartQuantity.text(`${$cart.find('.cart-qty').text().trim()}x`)
 }
 
 $('.cart-link').on('click', (e) => {
