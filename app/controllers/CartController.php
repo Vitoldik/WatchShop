@@ -46,6 +46,14 @@ class CartController extends AppController {
         $this->sendCartResponse();
     }
 
+    public function clearAction() {
+        unset($_SESSION['cart']);
+        unset($_SESSION['cart.quantity']);
+        unset($_SESSION['cart.sum']);
+        unset($_SESSION['cart.currency']);
+        $this->sendCartResponse();
+    }
+
     private function sendCartResponse() {
         if ($this->isAjax()) {
             $this->loadView('cart_modal');
