@@ -32,4 +32,10 @@ class Cart extends AppModel {
         $_SESSION['cart.sum'] = ($_SESSION['cart.sum'] ?? 0) + $quantity * $price * $_SESSION['cart.currency']['value'];
     }
 
+    public function deleteItem($id) {
+        $item = $_SESSION['cart'][$id];
+        $_SESSION['cart.quantity'] -= $item['quantity'];
+        $_SESSION['cart.sum'] -= $item['quantity'] * $item['price'];
+        unset($_SESSION['cart'][$id]);
+    }
 }

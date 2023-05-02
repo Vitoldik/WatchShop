@@ -25,14 +25,33 @@ class CartController extends AppController {
         $cartModel = new Cart();
         $cartModel->addToCart($product, $quantity, $modification);
 
-        if ($this->isAjax()) {
-            $this->loadView('cart_modal');
-        } else {
-            redirect();
-        }
+        $this->sendCartResponse();
     }
 
     public function showAction() {
         $this->loadView('cart_modal');
+    }
+
+    public function deleteAction() {
+        $id = $_GET['id'] ?? null;
+
+        if (!$id)
+            return false;
+
+        if (isset($_SESSION['cart'][$id])) {
+            $cart = new Cart();
+            $cart->deleteItem($id);
+        }
+
+        $this->sendCartResponse();
+    }
+
+    private function sendCartResponse() {
+        if ($this->isAjax()) {
+            $this->loadView('cart_modal');
+            return;
+        }
+
+        redirect();
     }
 }

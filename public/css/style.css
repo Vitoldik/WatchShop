@@ -3100,3 +3100,7 @@ ul.tag-men {
 	display: flex;
 	align-items: center;
 }
+
+.del-item {
+	cursor: pointer;
+}

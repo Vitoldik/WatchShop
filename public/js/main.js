@@ -57,7 +57,7 @@ function showCart(cart) {
 
     if (isCartEmpty) {
         $simpleCartTotal.text('Empty Cart')
-        $simpleCartQuantity.clear()
+        $simpleCartQuantity.empty()
         return
     }
 
@@ -83,3 +83,19 @@ function getCart() {
         }
     })
 }
+
+$modalBody.on('click', '.del-item', ({currentTarget}) => {
+    $.ajax({
+        url: '/cart/delete',
+        data: {
+            id: $(currentTarget).data('id')
+        },
+        type: 'GET',
+        success: (response) => {
+            showCart(response)
+        },
+        error: () => {
+            alert('Error! Try later')
+        }
+    })
+})
