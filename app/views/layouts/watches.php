@@ -65,12 +65,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 </div>
                         </div>
                     </a>
-<!--                    <a href="checkout.html">-->
-<!--                        <div class="total">-->
-<!--                            <span class="simpleCart_total"></span></div>-->
-<!--                        <img src="images/cart-1.png" alt="" />-->
-<!--                    </a>-->
-<!--                    <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>-->
                     <div class="clearfix"> </div>
                 </div>
             </div>
@@ -208,7 +202,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           SYMBOL_RIGHT = '<?=$curr['symbol_right']?>'
 </script>
 
-<script src="js/jquery-1.11.0.min.js"></script>
+<script src="js/jquery-3.6.4.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <!--dropdown-->
 <script src="js/jquery.easydropdown.js"></script>
@@ -235,16 +229,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     });
 </script>
 <script src="js/megamenu.js"></script>
-<script src="js/imagezoom.js"></script>
-<!-- Flex slider -->
-<script defer src="js/jquery.flexslider.js"></script>
+<!-- Zoom -->
+<script src="js/jquery.elevatezoom.js"></script>
 <script>
-    $(window).load(function() {
-        $('.flexslider').flexslider({
-            animation: "slide",
-            controlNav: "thumbnails"
-        });
-    });
+    $('[data-imagezoom]').elevateZoom();
+</script>
+<!-- Flex slider -->
+<script src="js/jquery.flexslider.js"></script>
+<script>
+    $('.flexslider').flexslider({
+        animation: "slide",
+        controlNav: "thumbnails"
+    })
 </script>
 <script src="js/jquery.easydropdown.js"></script>
 <script type="text/javascript">

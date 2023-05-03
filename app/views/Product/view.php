@@ -22,7 +22,9 @@
                             <ul class="slides">
                                 <?php foreach ($gallery as $item): ?>
                                 <li data-thumb="images/<?=$item->img?>">
-                                    <div class="thumb-image"> <img src="images/<?=$item->img?>" data-imagezoom="true" class="img-responsive" alt=""/> </div>
+                                    <div class="thumb-image">
+                                        <img src="images/<?=$item->img?>" data-imagezoom="true" class="img-responsive" alt="">
+                                    </div>
                                 </li>
                                 <?php endforeach; ?>
                             </ul>
