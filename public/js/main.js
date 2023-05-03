@@ -4,7 +4,7 @@ $('#currency').on('change',
 
 // Модификация товара
 $('.available select').on('change', ({currentTarget}) => {
-    const $currentTarget = $(currentTarget);
+    const $currentTarget = $(currentTarget)
     //const id = $currentTarget.val()
     const {/*title, */price} = $currentTarget.find('option').filter(':selected').data()
     const $basePrice = $('#base-price')
@@ -100,3 +100,27 @@ function clearCart() {
         error: () => alert('Error! Try later')
     })
 }
+
+// Поиск
+const $typeahead = $("#typeahead")
+
+const products = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.whitespace,
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    remote: {
+        wildcard: '%QUERY',
+        url: `${MAIN_URL}/search/typeahead?query=%QUERY`
+    }
+})
+
+products.initialize()
+
+$typeahead.typeahead({highlight: true}, {
+    name: 'products',
+    display: 'title',
+    limit: 10,
+    source: products
+})
+
+$typeahead.bind('typeahead:select', (ev, suggestion) =>
+    window.location = `${MAIN_URL}/search/?s=${encodeURIComponent(suggestion.title)}`)

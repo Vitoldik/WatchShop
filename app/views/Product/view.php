@@ -10,7 +10,7 @@
 </div>
 <!--end-breadcrumbs-->
 <!--start-single-->
-<div class="single contact">
+<div class="single">
     <div class="container">
         <div class="single-main">
             <div class="col-md-9 single-main-left">
