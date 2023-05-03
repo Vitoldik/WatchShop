@@ -97,7 +97,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="col-md-3 header-right">
                 <div class="search-bar">
                     <form action="search" method="get" autocomplete="off">
-                        <input class="typeahead" type="text" id="typeahead" name="search" placeholder="What are we looking for?">
+                        <input class="typeahead" type="text" id="typeahead" name="s" placeholder="What are we looking for?">
                         <input type="submit" value="">
                     </form>
                 </div>
