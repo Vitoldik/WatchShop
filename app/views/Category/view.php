@@ -3,8 +3,7 @@
     <div class="container">
         <div class="breadcrumbs-main">
             <ol class="breadcrumb">
-                <li><a href="<?=MAIN_URL;?>">Home</a></li>
-                <li>Category</li>
+                <?=$breadcrumbs?>
             </ol>
         </div>
     </div>

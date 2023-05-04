@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\BreadCrumbs;
 use app\models\Category;
 use R;
 
@@ -14,11 +15,12 @@ class CategoryController extends AppController {
         if (!$category)
             throw new \Exception('Страница не найдена', 404);
 
+        $categoryId = $category->id;
+
         // Хлебные крошки
-        $breadcrumbs = '';
+        $breadcrumbs = BreadCrumbs::getBreadCrumbsHtml($categoryId);
 
         $categoryModel = new Category();
-        $categoryId = $category->id;
         $ids = $categoryModel->getIds($categoryId);
         $ids = $ids ? $ids . $categoryId : $categoryId;
 
