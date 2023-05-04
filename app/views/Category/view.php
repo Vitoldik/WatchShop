@@ -50,6 +50,12 @@
                             </div>
                         <?php endforeach; ?>
                         <div class="clearfix"></div>
+                        <?php if ($pagination->countPages > 1): ?>
+                            <div class="text-center">
+                                <p><?=count($products)?> товара(ов) из <?=$totalPages?></p>
+                                <?=$pagination?>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 <?php else: ?>
                     <h3>There are no products in this category :(</h3>
