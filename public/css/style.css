@@ -1418,23 +1418,21 @@ a.mask {
 .account-top,.register-top{
 	text-align:center;
 }
-.account-main,.register-main{
-	margin-top:4%;
+.account-main, .register-main {
+	margin-top: 2em;
 }
 .account-bottom {
     margin-top: 2.2em;
 }
-.account-left input[type="text"],.account-left input[type="password"] {
-    width: 90%;
-    margin: 0px;
-    color: #000;
+.account-left input[type="text"],.account-left input[type="password"], .account-left input[type="email"] {
+	color: #000;
     background: none;
     padding: 8px 10px;
     outline: none;
     border: 1px solid #000;
     font-family: 'Lato-Regular';
     font-size: 14px;
-	margin-bottom:20px;
+	margin: 0 0 20px;
 }
 .address {
     margin-top: 10px;
@@ -2244,9 +2242,8 @@ figure.effect-bubba p {
     width: 50%;
     float: left;
 }
-.account-left input[type="text"], .account-left input[type="password"] {
+.account-left input[type="text"], .account-left input[type="password"], .account-left input[type="email"] {
     margin-bottom: 15px;
-	width: 95%;
 }
 .account-bottom {
     margin-top: 1.4em;
@@ -2257,9 +2254,6 @@ figure.effect-bubba p {
 .account-left p {
     font-size: 13px;
 	margin: 1.2em 0 1.5em 0;
-}
-.account-main, .register-main {
-    margin-top: 3%;
 }
 .account-right a {
     padding: 9px 10px;
@@ -2311,9 +2305,8 @@ ul.cart-header li span, ul.cart-header1 li span, ul.cart-header2 li span {
 .account-left h3 {
     font-size: 1.35em;
 }
-.account-left input[type="text"], .account-left input[type="password"] {
+.account-left input[type="text"], .account-left input[type="password"], .account-left input[type="email"] {
     margin-bottom: 10px;
-    width: 95%;
     font-size: 12px;
     padding: 7px 10px;
 }
@@ -2923,9 +2916,6 @@ figure.effect-bubba p {
 .map iframe {
     height: 155px;
 }
-.account-main, .register-main {
-    margin-top: 4%;
-}
 .account-bottom {
     margin-top: 1em;
 }
@@ -3195,3 +3185,20 @@ span.twitter-typeahead {
 	top: 46px !important;
 }
 /* Конец стилей поиска */
+
+.drop > .btn-group > a {
+	color: #fff;
+	cursor: pointer;
+	position: relative;
+	top: -2px;
+}
+
+.dropdown-menu > li > a:hover {
+	background-color: #337ab7;
+	color: white;
+}
+
+.register-form-block {
+	float: none !important;
+	margin: 0 auto;
+}

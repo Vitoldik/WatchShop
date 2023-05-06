@@ -52,7 +52,7 @@
                         <div class="clearfix"></div>
                         <?php if ($pagination->countPages > 1): ?>
                             <div class="text-center">
-                                <p><?=count($products)?> товара(ов) из <?=$totalPages?></p>
+                                <p><?=count($products)?> item(s) from <?=$totalPages?></p>
                                 <?=$pagination?>
                             </div>
                         <?php endif; ?>
