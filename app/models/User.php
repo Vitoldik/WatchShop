@@ -45,4 +45,38 @@ class User extends AppModel {
 
         return false;
     }
+
+    public function login($isAdmin = false): bool {
+        $login = isset($_POST['login']) ? trim($_POST['login']) : null;
+        $password = isset($_POST['password']) ? trim($_POST['password']) : null;
+
+        if (!$login || !$password)
+            return false;
+
+        $query = "login = ?";
+
+        if ($isAdmin)
+            $query .= " AND role = 'admin'";
+
+        $user = R::findOne('user', $query, [$login]);
+
+        if (!$user)
+            return false;
+
+        if (!password_verify($password, $user->password))
+            return false;
+
+        foreach ($user as $k => $v) {
+            if ($k === 'password')
+                continue;
+
+            $_SESSION['user'][$k] = $v;
+        }
+
+        return true;
+    }
+
+    public static function isAuthorized(): bool {
+        return isset($_SESSION['user']);
+    }
 }

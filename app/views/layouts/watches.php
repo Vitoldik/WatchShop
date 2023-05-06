@@ -125,7 +125,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="row">
             <div class="col-md-12">
                 <?php if (isset($_SESSION['error'])): ?>
-                    <div class="alert alert-danger">
+                    <div class="alert alert-danger alert-dismissible">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                         <?php
                             echo $_SESSION['error'];
                             unset($_SESSION['error'])
@@ -133,7 +134,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </div>
                 <?php endif; ?>
                 <?php if (isset($_SESSION['success'])): ?>
-                    <div class="alert alert-success">
+                    <div class="alert alert-success alert-dismissible">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                         <?php
                             echo $_SESSION['success'];
                             unset($_SESSION['success'])
