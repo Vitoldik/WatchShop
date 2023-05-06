@@ -13,6 +13,7 @@ class UserController extends AppController {
 
             if (!$user->validate($_POST) || !$user->checkUnique()) {
                 $user->setErrorsToSession();
+                $_SESSION['form_data'] = $_POST;
             } else {
                 $user->attributes['password'] = password_hash($user->attributes['password'], PASSWORD_DEFAULT);
 

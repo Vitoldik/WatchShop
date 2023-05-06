@@ -1432,7 +1432,7 @@ a.mask {
     border: 1px solid #000;
     font-family: 'Lato-Regular';
     font-size: 14px;
-	margin: 0 0 20px;
+	margin: 0 0 12px;
 }
 .address {
     margin-top: 10px;
@@ -3201,4 +3201,16 @@ span.twitter-typeahead {
 .register-form-block {
 	float: none !important;
 	margin: 0 auto;
+}
+
+.help-block .list-unstyled {
+	margin: 0;
+}
+
+form .has-success .form-control {
+	border-color: green;
+}
+
+form .has-error .form-control {
+	border-color: red;
 }
