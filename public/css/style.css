@@ -1419,7 +1419,7 @@ a.mask {
 	text-align:center;
 }
 .account-main, .register-main {
-	margin-top: 2em;
+	margin: 2em 0;
 }
 .account-bottom {
     margin-top: 2.2em;

@@ -11,10 +11,16 @@ class UserController extends AppController {
             $user = new User();
             $user->load($_POST);
 
-            if (!$user->validate($_POST)) {
+            if (!$user->validate($_POST) || !$user->checkUnique()) {
                 $user->setErrorsToSession();
             } else {
-                $_SESSION['success'] = 'OK';
+                $user->attributes['password'] = password_hash($user->attributes['password'], PASSWORD_DEFAULT);
+
+                if ($user->save('user')) {
+                    $_SESSION['success'] = 'Account registered!';
+                } else {
+                    $_SESSION['error'] = 'User save error!';
+                }
             }
 
             redirect();

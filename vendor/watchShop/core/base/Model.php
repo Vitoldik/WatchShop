@@ -35,6 +35,16 @@ abstract class Model {
         return false;
     }
 
+    public function save($table) {
+        $bean = \R::dispense($table);
+
+        foreach ($this->attributes as $name => $value) {
+            $bean->$name = $value;
+        }
+
+        return \R::store($bean);
+    }
+
     public function setErrorsToSession() {
         $errors .= '<ul>';
 
