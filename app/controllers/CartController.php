@@ -3,6 +3,9 @@
 namespace app\controllers;
 
 use app\models\Cart;
+use app\models\Order;
+use app\models\User;
+use app\utils\UserUtils;
 use R;
 
 class CartController extends AppController {
@@ -52,6 +55,29 @@ class CartController extends AppController {
         unset($_SESSION['cart.sum']);
         unset($_SESSION['cart.currency']);
         $this->sendCartResponse();
+    }
+
+    public function viewAction() {
+        $this->setMeta('Cart');
+    }
+
+    public function checkoutAction() {
+        if (!empty($_POST)) {
+            if (!User::isAuthorized()) {
+                $userId = UserUtils::createUser();
+
+                if ($userId === null)
+                    redirect();
+            }
+
+            // сохранение заказа
+            $data['user_id'] = $userId ?? $_SESSION['user']['id'];
+            $data['note'] = $_POST['note'] ?? '';
+            $user_email = $_SESSION['user']['email'] ?? $_POST['email'];
+            $order_id = Order::saveOrder($data);
+            Order::mailOrder($order_id, $user_email);
+            redirect();
+        }
     }
 
     private function sendCartResponse() {

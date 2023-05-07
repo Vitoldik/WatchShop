@@ -79,4 +79,8 @@ class User extends AppModel {
     public static function isAuthorized(): bool {
         return isset($_SESSION['user']);
     }
+
+    public static function isAdmin(): bool {
+        return self::isAuthorized() && $_SESSION['user']['role'] == 'admin';
+    }
 }

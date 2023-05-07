@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\User;
+use app\utils\UserUtils;
 
 class UserController extends AppController {
 
@@ -10,38 +11,8 @@ class UserController extends AppController {
         if (User::isAuthorized())
             redirect('/');
 
-        if (!empty($_POST)) {
-            $user = new User();
-            $user->load($_POST);
-
-            if (!$user->validate($_POST) || !$user->checkUnique()) {
-                $user->setErrorsToSession();
-                $_SESSION['form_data'] = $_POST;
-            } else {
-                $user->attributes['password'] = password_hash($user->attributes['password'], PASSWORD_DEFAULT);
-
-                // Авторизуем зарегистрированного пользователя
-                if ($id = $user->save('user')) {
-                    $_SESSION['success'] = 'Account registered!';
-
-                    $_SESSION['user']['id'] = $id;
-                    $_SESSION['user']['role'] = 'user';
-
-                    foreach ($user->attributes as $name => $value) {
-                        if ($name === 'password')
-                            continue;
-
-                        $_SESSION['user'][$name] = $value;
-                    }
-
-                    redirect('/');
-                } else {
-                    $_SESSION['error'] = 'User save error!';
-                }
-            }
-
-            redirect();
-        }
+        if (!empty($_POST))
+            redirect(UserUtils::createUser() !== null ? '/' : '');
 
         $this->setMeta('Registration');
     }

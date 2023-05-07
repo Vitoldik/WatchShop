@@ -13,7 +13,7 @@
             <tbody>
                 <?php foreach($_SESSION['cart'] as $id => $item): ?>
                     <tr>
-                        <td><a href="product/<?=$item['alias']?>"><img src="images/<?=$item['img']?>" alt=""></a></td>
+                        <td><a href="product/<?=$item['alias']?>"><img class="cart-product-img" src="images/<?=$item['img']?>" alt=""></a></td>
                         <td><a href="product/<?=$item['alias']?>"><?=$item['title']?></td>
                         <td><?=$item['quantity']?></td>
                         <td><?=$item['price']?></td>
