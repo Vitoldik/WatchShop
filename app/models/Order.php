@@ -18,7 +18,15 @@ class Order extends AppModel {
     }
 
     public static function saveOrderProduct($orderId) {
+        $queryPart = '';
 
+        foreach ($_SESSION['cart'] as $productId => $product) {
+            $productId = (int) $productId;
+            $queryPart .= "($orderId, $productId, {$product['quantity']}, '{$product['title']}', {$product['price']}),";
+        }
+
+        $queryPart = rtrim($queryPart, ',');
+        R::exec("INSERT INTO order_product (order_id, product_id, qty, title, price) VALUES $queryPart");
     }
 
     public static function mailOrder($orderId, $userEmail) {
