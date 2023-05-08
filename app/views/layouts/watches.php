@@ -232,6 +232,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     </div>
 </div>
 
+<div class="preloader">
+    <img src="images/ring.svg" alt="">
+</div>
+
 <?php $curr = \watchShop\App::$app->getProperty('currency') ?>
 <script>
     const MAIN_URL = '<?=MAIN_URL?>',
