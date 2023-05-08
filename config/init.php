@@ -4,6 +4,7 @@ const DEBUG = true;
 const ROOT_DIR = __DIR__ . '/..';
 const PUBLIC_DIR = __DIR__ . '/../public';
 const APP_DIR = __DIR__ . '/../app';
+const VIEWS_DIR = APP_DIR . '/views';
 const CORE_DIR = __DIR__ . '/../vendor/watchShop/core';
 const LIBS_DIR = __DIR__ . '/../vendor/watchShop/core/libs';
 const CACHE_DIR = __DIR__ . '/../tmp/cache';

@@ -64,4 +64,11 @@ class Cart extends AppModel {
             $_SESSION['cart.currency'][$k] = $v;
         }
     }
+
+    public static function clearCart() {
+        unset($_SESSION['cart']);
+        unset($_SESSION['cart.quantity']);
+        unset($_SESSION['cart.sum']);
+        unset($_SESSION['cart.currency']);
+    }
 }

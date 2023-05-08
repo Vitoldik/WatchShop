@@ -6,7 +6,7 @@ use app\models\User;
 
 class UserUtils {
 
-    public static function createUser() {
+    public static function createUser(): int|string|null {
         $user = new User();
         $user->load($_POST);
 
