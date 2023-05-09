@@ -4,8 +4,11 @@
         <div class="row1 scroll-pane">
             <div class="col col-4">
                 <?php foreach ($this->attrs[$groupId] as $attrId => $value): ?>
+                    <?php
+                        $checked = !empty($filter) && in_array($attrId, $filter) ? ' checked' : null;
+                    ?>
                     <label class="checkbox">
-                        <input type="checkbox" name="checkbox" value="<?= $attrId; ?>"><i></i>
+                        <input type="checkbox" name="checkbox" value="<?= $attrId; ?>" <?= $checked; ?>><i></i>
                         <?= $value; ?>
                     </label>
                 <?php endforeach; ?>

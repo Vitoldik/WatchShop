@@ -37,6 +37,11 @@ class Filter {
 
     protected function getHTMl() {
         ob_start();
+        $filter = self::getFilters();
+
+        if (isset($filter))
+            $filter = explode(',', $filter);
+
         require $this->tpl;
         return ob_get_clean();
     }
