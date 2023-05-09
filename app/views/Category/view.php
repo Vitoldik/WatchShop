@@ -62,7 +62,7 @@
                 <?php endif; ?>
             </div>
             <div class="col-md-3 prdt-right">
-                <div class="w_sidebar">
+                <div class="w_sidebar filter-sidebar">
                     <?php new \app\widgets\filter\Filter() ?>
                 </div>
             </div>

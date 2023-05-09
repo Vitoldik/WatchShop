@@ -124,3 +124,38 @@ $typeahead.typeahead({highlight: true}, {
 
 $typeahead.bind('typeahead:select', (ev, suggestion) =>
     window.location = `${MAIN_URL}/search/?s=${encodeURIComponent(suggestion.title)}`)
+
+// Фильтры
+$preloader = $('.preloader')
+$productOne = $('.content .product-one')
+
+$('body').on('change', '.filter-sidebar input', () => {
+    const $checked = $('.filter-sidebar input:checked')
+    const data = []
+
+    $checked.each(function () {
+        data.push(this.value)
+    })
+
+    if (data.length) {
+        $.ajax({
+            url: location.href,
+            data: {
+                filter: data.join(',')
+            },
+            type: 'GET',
+            beforeSend: () => {
+                $preloader.fadeIn(300, () => {
+                    $productOne.hide()
+                })
+            },
+            success: (response) => {
+                $preloader.delay(500).fadeOut('slow',
+                    () => $productOne.html(response).fadeIn())
+            },
+            error: () => alert('Error!')
+        })
+    } else {
+        window.location = location.pathname
+    }
+})
