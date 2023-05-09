@@ -55,4 +55,10 @@ class Filter {
 
         return $attrs;
     }
+
+    public static function getFilters(): array|string|null {
+        return !empty($_GET['filter'])
+            ? preg_replace('#[^\d,]#', '', $_GET['filter'])
+            : null;
+    }
 }

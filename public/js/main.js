@@ -150,8 +150,18 @@ $('body').on('change', '.filter-sidebar input', () => {
                 })
             },
             success: (response) => {
-                $preloader.delay(500).fadeOut('slow',
-                    () => $productOne.html(response).fadeIn())
+                $preloader.delay(500).fadeOut('slow', () => {
+                    $productOne.html(response).fadeIn()
+
+                    // Добавляем фильтр в адресную строку
+                    const params = location.search
+
+                    const url = params.replace(/filter(.+?)(&|$)/g, '')
+                    const newURL = (location.pathname + url + (params ? "&" : "?") + "filter=" + data)
+                        .replace('&&', '&')
+                        .replace('?&', '?')
+                    history.pushState({}, '', newURL)
+                })
             },
             error: () => alert('Error!')
         })
